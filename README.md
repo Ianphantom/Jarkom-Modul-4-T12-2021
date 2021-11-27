@@ -489,104 +489,24 @@ Untuk CIDR kami mengerjakan nya pada GNS3. Pada GNS3 kami membuat topologi jarin
 
 ![Topologi GNS3](https://user-images.githubusercontent.com/63605397/143672770-1504eb70-fed1-4c18-9749-dcb5def194eb.png)
 
-Untuk pengaturan IP, kami mengatur IP berdasarkan table perhitungan yang telah kami buat, lalu kami mengassign Ip tersebut kedalam setiap node. Sebagai Contoh kita ambil subnet A1.
+Berdasarkan perhitungan diatas, selanjutnya kami mengkonfigurasi IP kedalam setiap node. Kita ambil contoh pada subnet A2 dimana terdapat router `Water7` yang terhubung dengan `Cipher` melalui `eth1` sebagai berikut:
 ```
-Subnet A1 : 
-    NID : 192.217.8.0
-    Netmask : 255.255.252.0
-    IP range : 192.217.8.1 - 192.217.11.254
-```
-berdasarkan data tersebut, maka kita dapat mengatur nya pada cisco packet tracer nya. Pada Foosha dapat kita lihat bahwa interface yang terhubung dengan subnet A1 adalah `Fa0/1`. maka ip pada `interface Fa0/1` yang kita atur dengan IP range yang tersedia sebagai berikut :
-
-![image](https://user-images.githubusercontent.com/50267676/143538645-3eccdc2f-2e42-40b9-a78e-7740ca22a330.png)
-
-Setelah mengatur IP pada foosha, selanjutnya kita mengatur IP pada `Blueno` dengan IP range yang telah tersedia sebagai berikut : 
-
-![image](https://user-images.githubusercontent.com/50267676/143539035-86f3b6e8-1184-4325-9c04-fad83fbc623e.png)
-
-Setelah kita berhasil mengatur IP pada subnet A1, kita lanjutkan terus mengatur IP setiap subnet sampai A15 sesuai dengan hasil perhitungan yang telah kita dapatkan sebelumnya. Karena terlalu banyak, kami hanya mencontohkan assign IP pada satu subnet saja. Untuk assign lengkap nya dapat di akses melalui <a href="https://github.com/Ianphantom/Jarkom-Modul-4-T12-2021/blob/main/Jarkom.pkt"><b style="color:red">link berikut ini</b></a> 
-
-Setelah semua Node sudah diatur IP nya, selanjutnya kita akan melakukan routing agar semua node saling terhubung. Sebagai contoh penjelasan, kita ambil `Router Water7`. 
-- Water 7 harus terhubung dengan subnet A6
-- Water 7 harus terhubung dengan subnet A7
-- Subnet A6 dan A7 terhubung ke `Pucci`
-- Oleh karena itu, nexthop dari subnet A6 dan A7 adalah interface `Pucci` yang terhubung ke `Water7`
-
-Maka Pengaturan routing nya adalah :
-```
-Subnet A6 :
-    NID = 192.217.27.0
-    Netmask = 255.255.255.128
-    NextHop  = 192.217.27.154
-
-Subnet A6 :
-    NID = 192.217.0.0
-    Netmask = 255.255.248.0
-    NextHop  = 192.217.27.154
-
-Dan kerena water7 berada di bawah Foosha, maka kita perlu menabmahkan routing
-    NID : 0.0.0.0
-    Netmask : 0.0.0.0
-    Nexthop : 192.217.27.149
-```
-Berikut adalah contoh jika kita sudah melakukan routing pada `Water7`
-
-![image](https://user-images.githubusercontent.com/50267676/143540760-969c9315-07d5-4516-97e8-fff26c9e16f3.png)
-
-Berikut adalah routing untuk setiap router yang ada :
-- Pucci
-```
-0.0.0.0/0 via 192.217.27.153
-```
-- Water7
-```
-192.217.27.0/25 via 192.217.27.154
-192.217.0.0/21 via 192.217.27.154
-0.0.0.0/0 via 192.217.27.149
-```
-- Foosha
-```
-192.217.16.0/22 via 192.217.27.150
-192.217.27.152/30 via 192.217.27.150
-192.217.27.0/25 via 192.217.27.150
-192.217.0.0/21 via 192.217.27.150
-192.217.20.0/22 via 192.217.27.158
-192.217.24.0/23 via 192.217.27.158
-192.217.27.128/28 via 192.217.27.158
-192.217.27.160/30 via 192.217.27.158
-192.217.27.164/30 via 192.217.27.158
-192.217.12.0/22 via 192.217.27.158
-192.217.26.0/24 via 192.217.27.158
-```
-- Guanhao
-```
-0.0.0.0/0 via 192.217.27.157
-192.217.27.128/28 via 192.217.24.3
-192.217.27.164/30 via 192.217.27.162
-192.217.26.0/24 via 192.217.27.162
-192.217.12.0/22 via 192.217.27.162
-```
-- Alabasta
-```
-0.0.0.0/0 via 192.217.24.1
-```
-- Oimo
-```
-0.0.0.0/0 via 192.217.27.161
-192.217.12.0/22 via 192.217.26.3
-```
-- Seastone
-```
-0.0.0.0/0 via 192.217.26.1
+auto eth1
+iface eth1 inet static
+	address 192.217.224.1
+	netmask 255.255.252.0
 ```
 
-Dengan melakukan routing seperti itu, kita sudah dapat memastikan bahwa semua node sudah terhubung. Sebagai contoh kita ambil `Jipangu - Elena`
+Sedangkan pada Cipher konfigurasinya sebagai berikut:
+```
+auto eth0
+iface eth0 inet static
+	address 192.217.224.2
+	netmask 255.255.252.0
+	gateway 192.217.224.1
+```
 
-![image](https://user-images.githubusercontent.com/50267676/143541669-20e79ea1-4f16-4c78-aaff-2c3b48e52dbc.png)
-
-Hasil routing kami juga sudah berhasil melewati serangkaian tes yang telah diberikan oleh asisten saat demo. Sehingga dapat dipastikan bahwa subnetting dan routing dengan metode CIDR kami sudah benar dan tepat.
-
-Untuk hasil lengkapnya dapat dilihat pada <a href="https://github.com/Ianphantom/Jarkom-Modul-4-T12-2021/blob/main/Jarkom.pkt"><b style="color:red">link berikut ini</b></a> 
+Untuk versi lengkapnya dapat dilihat langsung di file <a href="https://github.com/Ianphantom/Jarkom-Modul-4-T12-2021/blob/main/Modul4.gns3project"><b style="color:blue">berikut</b></a> 
 
 ### Kendala
 1. Untuk kendalanya sendiri, kami kebingungan dalam menentukan IP dari masing-masing subnet pada metode CIDR sehingga kami membutuhkan waktu yang agak lama dalam menentukannya dan teratasi dengan menyeimbangkan tree yang sebelumnya sudah kami buat dan setelah menyeimbangkan tree sebelumnya terbentuklah tree yang baru seperti pada gambar tree CIDR di atas.
