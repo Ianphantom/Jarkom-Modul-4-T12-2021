@@ -378,76 +378,116 @@ Untuk hasil lengkapnya dapat dilihat pada <a href="https://github.com/Ianphantom
 ### Metode Subnetting dan Routing CIDR
 Untuk mengerjakan dengan metode CIDR, pertama sekali kami membagi gambar tersebut menjadi kelompok yang lebih besar dengan menggabungkan antara kelompok kelompok yang sudah dibuat menjadi satu kelompok besar. Berikut adalah gambar pembagian yang telah kami buat.
 
-![Group 81](https://user-images.githubusercontent.com/50267676/143535337-20af5dd2-8104-48c8-bc42-2e146fec0086.png)
+![Pengelompokkan CIDR](https://user-images.githubusercontent.com/63605397/143672891-c5ee3f8e-23bc-4a1d-9abe-4ab61c315bc0.png)
 
-Setelah kami melakukan pembagian tersebut, berikutnya kami menentukan netmask dari masing-masing subnet menyesuaikan kelompok subnet yang sudah dibuat. Berikut adalah daftar subnet beserta netmask yang kami kelompokkan
+Setelah kami melakukan pembagian tersebut, berikutnya kami menentukan NID dari masing-masing subnet menyesuaikan kelompok besar yang sudah dibuat. Untuk melakukan perhitungan subnetting dengan metode CIDR, maka kami membuat pohon perhitungan CIDR sebagai berikut.
 
-Dapat dilihat bahwa major network nya berada pada netmask /19. Prefix IP kelompok kami adalah 192.217.X.X. Untuk melakukan perhitungan subnetting dengan metode CIDR, maka kami membuat pohon perhitungan CIDR sebagai berikut.
+![CIDR TREE](https://user-images.githubusercontent.com/63605397/143673255-d0ca3c15-1180-4d15-91c8-c7368be632ad.jpg)
 
-![JarkomVLSM](https://user-images.githubusercontent.com/50267676/143536121-ab760839-e089-4445-81e8-e8bb23315986.jpg)
-
-Untuk table perhitungannya adalah sebagai berikut : 
+Berdasarkan perhitungan, maka didapatkan pembagian IP sebagai berikut : 
 <table cellspacing="0" border="0">
 	<colgroup span="8" width="64"></colgroup>
 	<tr>
-		<td   height="60" align="center" valign=middle><b><font face="Arial" color="#000000">Nama Subnet</b></td>
-		<td   align="center" valign=middle><b><font face="Arial" color="#000000">Address</b></td>
+		<td   height="60" align="center" valign=middle><b><font face="Arial" color="#000000">Subnet</b></td>
+		<td   align="center" valign=middle><b><font face="Arial" color="#000000">NID</b></td>
 		<td   align="center" valign=middle><b><font face="Arial" color="#000000">Mask</b></td>
 		<td   align="center" valign=middle><b><font face="Arial" color="#000000">Dec Mask</b></td>
 	</tr>
 	<tr>
-		<td   height="80" align="center" valign=middle><b>A7</b></td>
-		<td   align="center" valign=middle>192.217.0.0</td>
+		<td   height="80" align="center" valign=middle><b>A1</b></td>
+		<td   align="center" valign=middle>192.217.128.4</td>
+		<td   align="center" valign=middle>/30</td>
+		<td   align="center" valign=middle>255.255.255.252</td>
+	</tr>
+	<tr>
+		<td   height="100" align="center" valign=middle><b>A2</b></td>
+		<td   align="center" valign=middle>192.217.224.0</td>
+		<td   align="center" valign=middle>/22</td>
+		<td   align="center" valign=middle>255.255.252.0</td>
+	</tr>
+	<tr>
+		<td   height="100" align="center" valign=middle><b>A3</b></td>
+		<td   align="center" valign=middle>192.217.128.0</td>
+		<td   align="center" valign=middle>/30</td>
+		<td   align="center" valign=middle>255.255.255.252</td>
+	</tr>
+	<tr>
+		<td   height="100" align="center" valign=middle><b>A4</b></td>
+		<td   align="center" valign=middle>192.217.136.0</td>
+		<td   align="center" valign=middle>/30</td>
+		<td   align="center" valign=middle>255.255.255.252</td>
+	</tr>
+	<tr>
+		<td   height="100" align="center" valign=middle><b>A5</b></td>
+		<td   align="center" valign=middle>192.217.208.0</td>
+		<td   align="center" valign=middle>/30</td>
+		<td   align="center" valign=middle>255.255.255.252</td>
+	</tr>
+	<tr>
+		<td   height="100" align="center" valign=middle><b>A6</b></td>
+		<td   align="center" valign=middle>192.217.200.0</td>
+		<td   align="center" valign=middle>/25</td>
+		<td   align="center" valign=middle>255.255.255.128</td>
+	</tr>
+	<tr>
+		<td   height="100" align="center" valign=middle><b>A7</b></td>
+		<td   align="center" valign=middle>192.217.192.0</td>
 		<td   align="center" valign=middle>/21</td>
 		<td   align="center" valign=middle>255.255.248.0</td>
 	</tr>
 	<tr>
-		<td   height="100" align="center" valign=middle><b>A1</b></td>
-		<td   align="center" valign=middle>192.217.8.0</td>
-		<td   align="center" valign=middle>/22</td>
-		<td   align="center" valign=middle>255.255.252.0</td>
-	</tr>
-	<tr>
-		<td   height="100" align="center" valign=middle><b>A14</b></td>
-		<td   align="center" valign=middle>192.217.12.0</td>
-		<td   align="center" valign=middle>/22</td>
-		<td   align="center" valign=middle>255.255.252.0</td>
-	</tr>
-	<tr>
-		<td   height="100" align="center" valign=middle><b>A2</b></td>
-		<td   align="center" valign=middle>192.217.16.0</td>
-		<td   align="center" valign=middle>/22</td>
-		<td   align="center" valign=middle>255.255.252.0</td>
-	</tr>
-	<tr>
 		<td   height="100" align="center" valign=middle><b>A8</b></td>
-		<td   align="center" valign=middle>192.217.20.0</td>
+		<td   align="center" valign=middle>192.217.4.0</td>
 		<td   align="center" valign=middle>/22</td>
 		<td   align="center" valign=middle>255.255.252.0</td>
+	</tr>
+	<tr>
+		<td   height="100" align="center" valign=middle><b>A9</b></td>
+		<td   align="center" valign=middle>192.217.64.0</td>
+		<td   align="center" valign=middle>/30</td>
+		<td   align="center" valign=middle>255.255.255.252</td>
 	</tr>
 	<tr>
 		<td   height="100" align="center" valign=middle><b>A10</b></td>
-		<td   align="center" valign=middle>192.217.24.0</td>
+		<td   align="center" valign=middle>192.217.0.0</td>
 		<td   align="center" valign=middle>/23</td>
 		<td   align="center" valign=middle>255.255.254.0</td>
 	</tr>
 	<tr>
+		<td   height="100" align="center" valign=middle><b>A11</b></td>
+		<td   align="center" valign=middle>192.217.2.0</td>
+		<td   align="center" valign=middle>/28</td>
+		<td   align="center" valign=middle>255.255.255.240</td>
+	</tr>
+	<tr>
+		<td   height="100" align="center" valign=middle><b>A12</b></td>
+		<td   align="center" valign=middle>192.217.48.0</td>
+		<td   align="center" valign=middle>/30</td>
+		<td   align="center" valign=middle>255.255.255.252</td>
+	</tr>
+	<tr>
 		<td   height="100" align="center" valign=middle><b>A13</b></td>
-		<td   align="center" valign=middle>192.217.26.0</td>
+		<td   align="center" valign=middle>192.217.36.0</td>
 		<td   align="center" valign=middle>/24</td>
 		<td   align="center" valign=middle>255.255.255.0</td>
 	</tr>
 	<tr>
-		<td   height="100" align="center" valign=middle><b>A6</b></td>
-		<td   align="center" valign=middle>192.217.27.0</td>
-		<td   align="center" valign=middle>/25</td>
-		<td   align="center" valign=middle sdval="255255255128" sdnum="1033;0;#,##0">255,255,255,128</td>
+		<td   height="100" align="center" valign=middle><b>A14</b></td>
+		<td   align="center" valign=middle>192.217.32.0</td>
+		<td   align="center" valign=middle>/22</td>
+		<td   align="center" valign=middle>255.255.252.0</td>
+	</tr>
+	<tr>
+		<td   height="100" align="center" valign=middle><b>A15</b></td>
+		<td   align="center" valign=middle>192.217.40.0</td>
+		<td   align="center" valign=middle>/30</td>
+		<td   align="center" valign=middle>255.255.255.252</td>
 	</tr>
 </table>
 
 Untuk CIDR kami mengerjakan nya pada GNS3. Pada GNS3 kami membuat topologi jaringan terlebih dahulu sebagai berikut
 
-![image](https://user-images.githubusercontent.com/50267676/143538029-e7b5e8e2-2649-4c24-80e9-41d6b300e795.png)
+![Topologi GNS3](https://user-images.githubusercontent.com/63605397/143672770-1504eb70-fed1-4c18-9749-dcb5def194eb.png)
 
 Untuk pengaturan IP, kami mengatur IP berdasarkan table perhitungan yang telah kami buat, lalu kami mengassign Ip tersebut kedalam setiap node. Sebagai Contoh kita ambil subnet A1.
 ```
@@ -544,7 +584,9 @@ Dengan melakukan routing seperti itu, kita sudah dapat memastikan bahwa semua no
 
 ![image](https://user-images.githubusercontent.com/50267676/143541669-20e79ea1-4f16-4c78-aaff-2c3b48e52dbc.png)
 
-Hasil routing kami juga sudah berhasil melewati serangkaian tes yang telah diberikan oleh asisten saat demo. Sehingga dapat dipastikan bahwa subnetting dan routing dengan metode VLSM kami sudah benar dan tepat.
+Hasil routing kami juga sudah berhasil melewati serangkaian tes yang telah diberikan oleh asisten saat demo. Sehingga dapat dipastikan bahwa subnetting dan routing dengan metode CIDR kami sudah benar dan tepat.
 
 Untuk hasil lengkapnya dapat dilihat pada <a href="https://github.com/Ianphantom/Jarkom-Modul-4-T12-2021/blob/main/Jarkom.pkt"><b style="color:red">link berikut ini</b></a> 
+
 ### Kendala
+1. Untuk kendalanya sendiri, kami kebingungan dalam menentukan IP dari masing-masing subnet pada metode CIDR sehingga kami membutuhkan waktu yang agak lama dalam menentukannya dan teratasi dengan menyeimbangkan tree yang sebelumnya sudah kami buat dan setelah menyeimbangkan tree sebelumnya terbentuklah tree yang baru seperti pada gambar tree CIDR di atas.
