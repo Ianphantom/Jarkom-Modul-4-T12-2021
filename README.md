@@ -395,7 +395,7 @@ Berdasarkan perhitungan, maka didapatkan pembagian IP sebagai berikut :
 	</tr>
 	<tr>
 		<td   height="80" align="center" valign=middle><b>A1</b></td>
-		<td   align="center" valign=middle>192.217.128.4</td>
+		<td   align="center" valign=middle>192.217.128.0</td>
 		<td   align="center" valign=middle>/30</td>
 		<td   align="center" valign=middle>255.255.255.252</td>
 	</tr>
