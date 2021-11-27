@@ -549,6 +549,7 @@ route add -net 192.217.32.0 netmask 255.255.252.0 gw 192.217.36.3
 ```
 
 Dengan melakukan routing seperti itu, kami sudah dapat memastikan bahwa semua node sudah terhubung. Sebagai contoh kita lakukan ping terhadap `Jipangu - Blueno` maka hasilnya sebagai berikut
+
 ![image](https://user-images.githubusercontent.com/50267676/143541669-20e79ea1-4f16-4c78-aaff-2c3b48e52dbc.png)
 
 Untuk hasil lengkapnya dapat dilihat pada link <a href="https://github.com/Ianphantom/Jarkom-Modul-4-T12-2021/blob/main/Modul4.gns3project"><b style="color:blue">berikut</b></a> 
