@@ -292,7 +292,7 @@ Setelah mengatur IP pada foosha, selanjutnya kita mengatur IP pada `Blueno` deng
 
 Setelah kita berhasil mengatur IP pada subnet A1, kita lanjutkan terus mengatur IP setiap subnet sampai A15 sesuai dengan hasil perhitungan yang telah kita dapatkan sebelumnya. Karena terlalu banyak, kami hanya mencontohkan assign IP pada satu subnet saja. Untuk assign lengkap nya dapat di akses melalui <a href="https://github.com/Ianphantom/Jarkom-Modul-4-T12-2021/blob/main/Jarkom.pkt"><b style="color:red">link berikut ini</b></a> 
 
-# Routing VLSM
+#### Routing VLSM
 Setelah semua Node sudah diatur IP nya, selanjutnya kita akan melakukan routing agar semua node saling terhubung. Sebagai contoh penjelasan, kita ambil `Router Water7`. 
 - Water 7 harus terhubung dengan subnet A6
 - Water 7 harus terhubung dengan subnet A7
@@ -509,8 +509,8 @@ iface eth0 inet static
 
 Untuk versi lengkapnya dapat dilihat langsung di file <a href="https://github.com/Ianphantom/Jarkom-Modul-4-T12-2021/blob/main/Modul4.gns3project"><b style="color:blue">berikut</b></a> 
 
-# Routing CIDR
-Setelah semua node dikonfigurasi IP nya, selanjutnya kami lakukan routing untuk menghubungkan semua node. Untuk penjelasannya tidak berbeda dengan <a href="https://github.com/Ianphantom/Jarkom-Modul-4-T12-2021#Routing-VLSM"><b style="color:blue">routing VLSM</b></a>, hanya saja pada GNS menggunakan perintah berikut:
+#### Routing CIDR
+Setelah semua node dikonfigurasi IP nya, selanjutnya kami lakukan routing untuk menghubungkan semua node. Untuk penjelasannya tidak berbeda dengan [routing VLSM](#Routing-VLSM), hanya saja pada GNS menggunakan perintah berikut:
 ```
 route add -net <NID subnet> netmask <netmask> gw <IP gateway>
 ```
