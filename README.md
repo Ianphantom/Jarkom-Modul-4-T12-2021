@@ -292,6 +292,7 @@ Setelah mengatur IP pada foosha, selanjutnya kita mengatur IP pada `Blueno` deng
 
 Setelah kita berhasil mengatur IP pada subnet A1, kita lanjutkan terus mengatur IP setiap subnet sampai A15 sesuai dengan hasil perhitungan yang telah kita dapatkan sebelumnya. Karena terlalu banyak, kami hanya mencontohkan assign IP pada satu subnet saja. Untuk assign lengkap nya dapat di akses melalui <a href="https://github.com/Ianphantom/Jarkom-Modul-4-T12-2021/blob/main/Jarkom.pkt"><b style="color:red">link berikut ini</b></a> 
 
+# Routing VLSM
 Setelah semua Node sudah diatur IP nya, selanjutnya kita akan melakukan routing agar semua node saling terhubung. Sebagai contoh penjelasan, kita ambil `Router Water7`. 
 - Water 7 harus terhubung dengan subnet A6
 - Water 7 harus terhubung dengan subnet A7
@@ -507,6 +508,50 @@ iface eth0 inet static
 ```
 
 Untuk versi lengkapnya dapat dilihat langsung di file <a href="https://github.com/Ianphantom/Jarkom-Modul-4-T12-2021/blob/main/Modul4.gns3project"><b style="color:blue">berikut</b></a> 
+
+# Routing CIDR
+Setelah semua node dikonfigurasi IP nya, selanjutnya kami lakukan routing untuk menghubungkan semua node. Untuk penjelasannya tidak berbeda dengan <a href="https://github.com/Ianphantom/Jarkom-Modul-4-T12-2021#Routing-VLSM"><b style="color:blue">routing VLSM</b></a>, hanya saja pada GNS menggunakan perintah berikut:
+```
+route add -net <NID subnet> netmask <netmask> gw <IP gateway>
+```
+perintah tersebut kami masukkan dalam file `shell.sh` pada device router, yang nantinya akan dijalankan dengan perintah `bash shell.sh`. Konfigurasi routing nya dapat dilihat sebagai berikut:
+
+1. Foosha
+```
+route add -net 192.217.224.0 netmask 255.255.252.0 gw 192.217.136.2
+route add -net 192.217.208.0 netmask 255.255.255.252 gw 192.217.136.2
+route add -net 192.217.192.0 netmask 255.255.248.0 gw 192.217.136.2
+route add -net 192.217.200.0 netmask 255.255.255.128 gw 192.217.136.2
+
+route add -net 192.217.2.0 netmask 255.255.255.240 gw 192.217.64.2
+route add -net 192.217.0.0 netmask 255.255.254.0 gw 192.217.64.2
+route add -net 192.217.4.0 netmask 255.255.252.0 gw 192.217.64.2
+route add -net 192.217.48.0 netmask 255.255.255.252 gw 192.217.64.2
+route add -net 192.217.40.0 netmask 255.255.255.252 gw 192.217.64.2
+route add -net 192.217.36.0 netmask 255.255.255.0 gw 192.217.64.2
+route add -net 192.217.32.0 netmask 255.255.252.0 gw 192.217.64.2
+```
+2. Water7
+```
+route add -net 192.217.200.0 netmask 255.255.255.128 gw 192.217.208.2
+route add -net 192.217.192.0 netmask 255.255.248.0 gw 192.217.208.2
+```
+3. Guanhao
+```
+route add -net 192.217.40.0 netmask 255.255.255.252 gw 192.217.48.2
+route add -net 192.217.32.0 netmask 255.255.252.0 gw 192.217.48.2
+route add -net 192.217.36.0 netmask 255.255.255.0 gw 192.217.48.2
+route add -net 192.217.2.0 netmask 255.255.255.240 gw 192.217.0.3
+```
+4. Oimo
+```
+route add -net 192.217.32.0 netmask 255.255.252.0 gw 192.217.36.3
+```
+
+Dengan melakukan routing seperti itu, kami sudah dapat memastikan bahwa semua node sudah terhubung. Sebagai contoh kita lakukan ping terhadap `Jipangu - Blueno` maka hasilnya sebagai berikut
+![image](https://user-images.githubusercontent.com/50267676/143541669-20e79ea1-4f16-4c78-aaff-2c3b48e52dbc.png)
+
+Untuk hasil lengkapnya dapat dilihat pada link <a href="https://github.com/Ianphantom/Jarkom-Modul-4-T12-2021/blob/main/Modul4.gns3project"><b style="color:blue">berikut</b></a> 
 
 ### Kendala
 1. Untuk kendalanya sendiri, kami kebingungan dalam menentukan IP dari masing-masing subnet pada metode CIDR sehingga kami membutuhkan waktu yang agak lama dalam menentukannya dan teratasi dengan menyeimbangkan tree yang sebelumnya sudah kami buat dan setelah menyeimbangkan tree sebelumnya terbentuklah tree yang baru seperti pada gambar tree CIDR di atas.
