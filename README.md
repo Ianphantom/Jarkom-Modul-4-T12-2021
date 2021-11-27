@@ -382,93 +382,6 @@ Untuk mengerjakan dengan metode CIDR, pertama sekali kami membagi gambar tersebu
 
 Setelah kami melakukan pembagian tersebut, berikutnya kami menentukan netmask dari masing-masing subnet menyesuaikan kelompok subnet yang sudah dibuat. Berikut adalah daftar subnet beserta netmask yang kami kelompokkan
 
-<table>
-    <tr>
-        <td   height="60" align="center" valign=middle><b><font face="Arial" color="#000000">Nama Subnet</b></td>
-        <td   height="60" align="center" valign=middle><b><font face="Arial" color="#000000">Jumlah Host</b></td>
-        <td   height="60" align="center" valign=middle><b><font face="Arial" color="#000000">Netmask</b></td>
-    </tr>
-    <tr>
-        <td>A1</td>
-        <td>1001</td>
-        <td>/22</td>
-    </tr>
-        <tr>
-        <td>A2</td>
-        <td>701</td>
-        <td>/22</td>
-    </tr>
-        <tr>
-        <td>A3</td>
-        <td>2</td>
-        <td>/30</td>
-    </tr>
-        <tr>
-        <td>A4</td>
-        <td>2</td>
-        <td>/30</td>
-    </tr>
-        <tr>
-        <td>A5</td>
-        <td>2</td>
-        <td>/30</td>
-    </tr>
-        <tr>
-        <td>A6</td>
-        <td>101</td>
-        <td>/25</td>
-    </tr>
-        <tr>
-        <td>A7</td>
-        <td>2021</td>
-        <td>/21</td>
-    </tr>
-        <tr>
-        <td>A8</td>
-        <td>521</td>
-        <td>/22</td>
-    </tr>
-        <tr>
-        <td>A9</td>
-        <td>2</td>
-        <td>/30</td>
-    </tr>
-        <tr>
-        <td>A10</td>
-        <td>502</td>
-        <td>/23</td>
-    </tr>
-        <tr>
-        <td>A11</td>
-        <td>13</td>
-        <td>/28</td>
-    </tr>
-        <tr>
-        <td>A12</td>
-        <td>2</td>
-        <td>/30</td>
-    </tr>
-        <tr>
-        <td>A13</td>
-        <td>252</td>
-        <td>/24</td>
-    </tr>
-        <tr>
-        <td>A14</td>
-        <td>721</td>
-        <td>/22</td>
-    </tr>
-    <tr>
-        <td>A15</td>
-        <td>2</td>
-        <td>/30</td>
-    </tr>
-        <tr>
-        <td>Total</td>
-        <td>5845</td>
-        <td>/19</td>
-    </tr>
-</table>
 Dapat dilihat bahwa major network nya berada pada netmask /19. Prefix IP kelompok kami adalah 192.217.X.X. Untuk melakukan perhitungan subnetting dengan metode CIDR, maka kami membuat pohon perhitungan CIDR sebagai berikut.
 
 ![JarkomVLSM](https://user-images.githubusercontent.com/50267676/143536121-ab760839-e089-4445-81e8-e8bb23315986.jpg)
@@ -478,163 +391,57 @@ Untuk table perhitungannya adalah sebagai berikut :
 	<colgroup span="8" width="64"></colgroup>
 	<tr>
 		<td   height="60" align="center" valign=middle><b><font face="Arial" color="#000000">Nama Subnet</b></td>
-		<td   align="center" valign=middle><b><font face="Arial" color="#000000">Size Diperlukan</b></td>
-		<td   align="center" valign=middle><b><font face="Arial" color="#000000">Di Alokasikan</b></td>
 		<td   align="center" valign=middle><b><font face="Arial" color="#000000">Address</b></td>
 		<td   align="center" valign=middle><b><font face="Arial" color="#000000">Mask</b></td>
 		<td   align="center" valign=middle><b><font face="Arial" color="#000000">Dec Mask</b></td>
-		<td   align="center" valign=middle><b><font face="Arial" color="#000000">Assignable Range</b></td>
-		<td   align="center" valign=middle><b><font face="Arial" color="#000000">Broadcast</b></td>
 	</tr>
 	<tr>
 		<td   height="80" align="center" valign=middle><b>A7</b></td>
-		<td   align="center" valign=middle sdval="2021" sdnum="1033;">2021</td>
-		<td   align="center" valign=middle sdval="2046" sdnum="1033;">2046</td>
 		<td   align="center" valign=middle>192.217.0.0</td>
 		<td   align="center" valign=middle>/21</td>
 		<td   align="center" valign=middle>255.255.248.0</td>
-		<td   align="center" valign=middle>192.217.0.1 - 192.217.7.254</td>
-		<td   align="center" valign=middle>192.217.7.255</td>
 	</tr>
 	<tr>
 		<td   height="100" align="center" valign=middle><b>A1</b></td>
-		<td   align="center" valign=middle sdval="1001" sdnum="1033;">1001</td>
-		<td   align="center" valign=middle sdval="1022" sdnum="1033;">1022</td>
 		<td   align="center" valign=middle>192.217.8.0</td>
 		<td   align="center" valign=middle>/22</td>
 		<td   align="center" valign=middle>255.255.252.0</td>
-		<td   align="center" valign=middle>192.217.8.1 - 192.217.11.254</td>
-		<td   align="center" valign=middle>192.217.11.255</td>
 	</tr>
 	<tr>
 		<td   height="100" align="center" valign=middle><b>A14</b></td>
-		<td   align="center" valign=middle sdval="721" sdnum="1033;">721</td>
-		<td   align="center" valign=middle sdval="1022" sdnum="1033;">1022</td>
 		<td   align="center" valign=middle>192.217.12.0</td>
 		<td   align="center" valign=middle>/22</td>
 		<td   align="center" valign=middle>255.255.252.0</td>
-		<td   align="center" valign=middle>192.217.12.1 - 192.217.15.254</td>
-		<td   align="center" valign=middle>192.217.15.255</td>
 	</tr>
 	<tr>
 		<td   height="100" align="center" valign=middle><b>A2</b></td>
-		<td   align="center" valign=middle sdval="701" sdnum="1033;">701</td>
-		<td   align="center" valign=middle sdval="1022" sdnum="1033;">1022</td>
 		<td   align="center" valign=middle>192.217.16.0</td>
 		<td   align="center" valign=middle>/22</td>
 		<td   align="center" valign=middle>255.255.252.0</td>
-		<td   align="center" valign=middle>192.217.16.1 - 192.217.19.254</td>
-		<td   align="center" valign=middle>192.217.19.255</td>
 	</tr>
 	<tr>
 		<td   height="100" align="center" valign=middle><b>A8</b></td>
-		<td   align="center" valign=middle sdval="521" sdnum="1033;">521</td>
-		<td   align="center" valign=middle sdval="1022" sdnum="1033;">1022</td>
 		<td   align="center" valign=middle>192.217.20.0</td>
 		<td   align="center" valign=middle>/22</td>
 		<td   align="center" valign=middle>255.255.252.0</td>
-		<td   align="center" valign=middle>192.217.20.1 - 192.217.23.254</td>
-		<td   align="center" valign=middle>192.217.23.255</td>
 	</tr>
 	<tr>
 		<td   height="100" align="center" valign=middle><b>A10</b></td>
-		<td   align="center" valign=middle sdval="502" sdnum="1033;">502</td>
-		<td   align="center" valign=middle sdval="510" sdnum="1033;">510</td>
 		<td   align="center" valign=middle>192.217.24.0</td>
 		<td   align="center" valign=middle>/23</td>
 		<td   align="center" valign=middle>255.255.254.0</td>
-		<td   align="center" valign=middle>192.217.24.1 - 192.217.25.254</td>
-		<td   align="center" valign=middle>192.217.25.255</td>
 	</tr>
 	<tr>
 		<td   height="100" align="center" valign=middle><b>A13</b></td>
-		<td   align="center" valign=middle sdval="251" sdnum="1033;">251</td>
-		<td   align="center" valign=middle sdval="254" sdnum="1033;">254</td>
 		<td   align="center" valign=middle>192.217.26.0</td>
 		<td   align="center" valign=middle>/24</td>
 		<td   align="center" valign=middle>255.255.255.0</td>
-		<td   align="center" valign=middle>192.217.26.1 - 192.217.26.254</td>
-		<td   align="center" valign=middle>192.217.26.255</td>
 	</tr>
 	<tr>
 		<td   height="100" align="center" valign=middle><b>A6</b></td>
-		<td   align="center" valign=middle sdval="101" sdnum="1033;">101</td>
-		<td   align="center" valign=middle sdval="126" sdnum="1033;">126</td>
 		<td   align="center" valign=middle>192.217.27.0</td>
 		<td   align="center" valign=middle>/25</td>
 		<td   align="center" valign=middle sdval="255255255128" sdnum="1033;0;#,##0">255,255,255,128</td>
-		<td   align="center" valign=middle>192.217.27.1 - 192.217.27.126</td>
-		<td   align="center" valign=middle>192.217.27.127</td>
-	</tr>
-	<tr>
-		<td   height="120" align="center" valign=middle><b>A11</b></td>
-		<td   align="center" valign=middle sdval="13" sdnum="1033;">13</td>
-		<td   align="center" valign=middle sdval="14" sdnum="1033;">14</td>
-		<td   align="center" valign=middle>192.217.27.128</td>
-		<td   align="center" valign=middle>/28</td>
-		<td   align="center" valign=middle sdval="255255255240" sdnum="1033;0;#,##0">255,255,255,240</td>
-		<td   align="center" valign=middle>192.217.27.129 - 192.217.27.142</td>
-		<td   align="center" valign=middle>192.217.27.143</td>
-	</tr>
-	<tr>
-		<td   height="120" align="center" valign=middle><b>A12</b></td>
-		<td   align="center" valign=middle sdval="2" sdnum="1033;">2</td>
-		<td   align="center" valign=middle sdval="2" sdnum="1033;">2</td>
-		<td   align="center" valign=middle>192.217.27.144</td>
-		<td   align="center" valign=middle>/30</td>
-		<td   align="center" valign=middle sdval="255255255252" sdnum="1033;0;#,##0">255,255,255,252</td>
-		<td   align="center" valign=middle>192.217.27.145 - 192.217.27.146</td>
-		<td   align="center" valign=middle>192.217.27.147</td>
-	</tr>
-	<tr>
-		<td   height="120" align="center" valign=middle><b>A15</b></td>
-		<td   align="center" valign=middle sdval="2" sdnum="1033;">2</td>
-		<td   align="center" valign=middle sdval="2" sdnum="1033;">2</td>
-		<td   align="center" valign=middle>192.217.27.148</td>
-		<td   align="center" valign=middle>/30</td>
-		<td   align="center" valign=middle sdval="255255255252" sdnum="1033;0;#,##0">255,255,255,252</td>
-		<td   align="center" valign=middle>192.217.27.149 - 192.217.27.150</td>
-		<td   align="center" valign=middle>192.217.27.151</td>
-	</tr>
-	<tr>
-		<td   height="120" align="center" valign=middle><b>A3</b></td>
-		<td   align="center" valign=middle sdval="2" sdnum="1033;">2</td>
-		<td   align="center" valign=middle sdval="2" sdnum="1033;">2</td>
-		<td   align="center" valign=middle>192.217.27.152</td>
-		<td   align="center" valign=middle>/30</td>
-		<td   align="center" valign=middle sdval="255255255252" sdnum="1033;0;#,##0">255,255,255,252</td>
-		<td   align="center" valign=middle>192.217.27.153 - 192.217.27.154</td>
-		<td   align="center" valign=middle>192.217.27.155</td>
-	</tr>
-	<tr>
-		<td   height="120" align="center" valign=middle><b>A4</b></td>
-		<td   align="center" valign=middle sdval="2" sdnum="1033;">2</td>
-		<td   align="center" valign=middle sdval="2" sdnum="1033;">2</td>
-		<td   align="center" valign=middle>192.217.27.156</td>
-		<td   align="center" valign=middle>/30</td>
-		<td   align="center" valign=middle sdval="255255255252" sdnum="1033;0;#,##0">255,255,255,252</td>
-		<td   align="center" valign=middle>192.217.27.157 - 192.217.27.158</td>
-		<td   align="center" valign=middle>192.217.27.159</td>
-	</tr>
-	<tr>
-		<td   height="120" align="center" valign=middle><b>A5</b></td>
-		<td   align="center" valign=middle sdval="2" sdnum="1033;">2</td>
-		<td   align="center" valign=middle sdval="2" sdnum="1033;">2</td>
-		<td   align="center" valign=middle>192.217.27.160</td>
-		<td   align="center" valign=middle>/30</td>
-		<td   align="center" valign=middle sdval="255255255252" sdnum="1033;0;#,##0">255,255,255,252</td>
-		<td   align="center" valign=middle>192.217.27.161 - 192.217.27.162</td>
-		<td   align="center" valign=middle>192.217.27.163</td>
-	</tr>
-	<tr>
-		<td   height="120" align="center" valign=middle><b>A9</b></td>
-		<td   align="center" valign=middle sdval="2" sdnum="1033;">2</td>
-		<td   align="center" valign=middle sdval="2" sdnum="1033;">2</td>
-		<td   align="center" valign=middle>192.217.27.164</td>
-		<td   align="center" valign=middle>/30</td>
-		<td   align="center" valign=middle sdval="255255255252" sdnum="1033;0;#,##0">255,255,255,252</td>
-		<td   align="center" valign=middle>192.217.27.165 - 192.217.27.166</td>
-		<td   align="center" valign=middle>192.217.27.167</td>
 	</tr>
 </table>
 
